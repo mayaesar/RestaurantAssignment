@@ -8,7 +8,7 @@ public class Ingredient {
         this.ingredientName = ingredientName;
         this.price = price;
 
-        //comment
+        //wanna build a snowman
     }
 
     public String getIngredientName() {
