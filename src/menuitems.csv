@@ -1,0 +1,11 @@
+INVALID,0.00
+Pea Soup,8.00,Pea,Carrot
+Carrot Soup,7.50,Carrot,Tomato
+Tomato Soup,9.50,Pea,Carrot,Tomato
+Fries,5.00,Potato
+Baked Potato,4.50,Potato
+Onion Rings,6.00,Onion
+Potato Soup,8.00,Potato,Onion,Pea
+Hot Dog,7.50,Hot Dog,Onion,Bun
+Hamburger,8.00,Burger Patty,Onion,Bun
+Cheeseburger,8.50,Burger Patty,Onion,Bun,Cheese
