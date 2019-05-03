@@ -275,7 +275,7 @@ public class RestaurantApp{
     
     //LOAD INGREDIENTS
     //Start by counting the lines in our ingredients file to find out how many ingredients we have.
-    File ingredientsFile = new File("ingredients.csv");
+    File ingredientsFile = new File("/Users/mayaesar/Desktop/school/my classes/2nd semester/java |/assignment4/out/production/assignment4/ingredients.csv");
     Scanner ingredientScan = new Scanner(ingredientsFile);
     int ingredientsCount = 0;
     //For each line in the file, add one to our count of total ingredients
@@ -305,7 +305,7 @@ public class RestaurantApp{
     
     //LOAD MENU ITEMS
     //Start by counting the lines in our menu items file to find out how many menu items we have.
-    File menuFile = new File("menuitems.csv");
+    File menuFile = new File("/Users/mayaesar/Desktop/school/my classes/2nd semester/java |/assignment4/out/production/assignment4/menuitems.csv");
     Scanner menuItemScan = new Scanner(menuFile);
     int menuItemsCount = 0;
     //For each line in the file, add one to our count of total menu items
