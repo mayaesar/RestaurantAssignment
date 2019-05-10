@@ -1,21 +1,24 @@
 package model;
 
-public class Ingredient {
-    private String ingredientName;
-    private double price;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-    public Ingredient(String ingredientName, float price) {
+public class Ingredient {
+    private String[] ingredientName;
+    private double[] price;
+
+    public Ingredient(String[] ingredientName, double[] price) {
         this.ingredientName = ingredientName;
         this.price = price;
-
-        //wanna build a snowman
     }
 
-    public String getIngredientName() {
+    public String[] getIngredientName() {
         return ingredientName;
     }
 
-    public double getPrice() {
+
+    public double[] getPrice() {
         return price;
     }
 }
