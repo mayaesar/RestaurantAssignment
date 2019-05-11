@@ -106,6 +106,27 @@ public class RestaurantApp {
     }
 
     public void caseThree(Scanner keyboard){
+        int payTable;
+        do {
+            System.out.println("Which table is paying? Enter a table from 0 to 11.");
+            payTable = keyboard.nextInt();
+        }while(payTable < 0 || payTable > 11);
+        if(tables[payTable].hasOrdered()) {
+            System.out.println("That table hasn't ordered yet!");
+        }
+        else {
+            double owedAmount = 0;
+            for (int i=0; i<tables[payTable].getSize(); i++){
+                owedAmount += tables[payTable].getReceipt();
+                System.out.println("Table " + payTable + " owes " + owedAmount + "\n");
 
+                String payMethod;
+                do{
+                    System.out.println("How is this table paying? Enter debit, credit, or cash.");
+                    payMethod = keyboard.next();
+                }while(!(payMethod.equals("debit") || payMethod.equals("credit") || payMethod.equals("cash")));
+
+            }
+        }
     }
 }
