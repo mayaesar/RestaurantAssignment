@@ -4,7 +4,7 @@ public class Table {
     private MenuItem[] order;
     private int size;
     private double receipt;
-    private String paymentMethod;
+    private PayMethod paymentMethod;
 
     public Table(int numMenuItems){
         this.order = new MenuItem[numMenuItems];
@@ -31,12 +31,21 @@ public class Table {
         return order;
     }
 
-    public String getPaymentMethod() {
+    public PayMethod getPaymentMethod() {
         return paymentMethod;
     }
 
     public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+        if (paymentMethod.equals("cash")){
+            this.paymentMethod = PayMethod.CASH;
+        }
+        if (paymentMethod.equals("debit")) {
+            this.paymentMethod = PayMethod.DEBIT;
+        }
+        if (paymentMethod.equals("credit")){
+            this.paymentMethod = PayMethod.CREDIT;
+        }
+
     }
 
     public int getSize() {

@@ -8,8 +8,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CreateMenu {
-    private Ingredient ingredient;
-    private MenuItem menuItem;
+    private Ingredient[] ingredients;
+    private MenuItem[] menuItems;
+    //private MenuItem menuItem;
     private int size;
 
     public CreateMenu() throws FileNotFoundException {
@@ -18,7 +19,7 @@ public class CreateMenu {
     }
 
 
-    private Ingredient loadIngredients() throws FileNotFoundException {
+    private void loadIngredients() throws FileNotFoundException {
         String[] iName;
         double[] iPrice;
 
@@ -29,6 +30,8 @@ public class CreateMenu {
             ingredientScan.nextLine();
             ingredientsCount++;
         }
+
+        this.ingredients = new Ingredient[ingredientsCount];
         iName = new String[ingredientsCount];
         iPrice = new double[ingredientsCount];
 
@@ -39,15 +42,17 @@ public class CreateMenu {
             String[] inputLine = ingredientScan.nextLine().split(",");
             iName[ingredientNo] = inputLine[0];
             iPrice[ingredientNo] = Double.parseDouble(inputLine[1]);
+            this.ingredients[ingredientNo] = new Ingredient(iName[ingredientNo], iPrice[ingredientNo]);
             ingredientNo++;
+
         }
-        return this.ingredient = new Ingredient(iName, iPrice);
     }
 
-    private MenuItem loadMenuItems() throws FileNotFoundException {
+    private void loadMenuItems() throws FileNotFoundException {
         String[] mName;
         double[] mPrice;
-        int[][] mIngredients;
+
+
 
         File menuItemFile = new File("src//menuitems.csv");
         Scanner menuItemScan = new Scanner(menuItemFile);
@@ -58,7 +63,7 @@ public class CreateMenu {
         }
         mName = new String[size];
         mPrice = new double[size];
-        mIngredients = new int[size][];
+        menuItems = new MenuItem[size];
 
         menuItemScan = new Scanner(menuItemFile);
         int menuNo = 0;
@@ -68,26 +73,30 @@ public class CreateMenu {
             mPrice[menuNo] = Double.parseDouble(inputLine[1]);
             int[] ingredientList = new int[inputLine.length - 2];
             for (int i = 2; i < inputLine.length; i++) {
-                for (int j = 0; j < mIngredients.length; j++) {
-                    if (inputLine[i].equals(mIngredients[j])) {
+                for (int j = 0; j < ingredients.length; j++) {
+                    if (inputLine[i].equals(ingredients[j].getIngredientName())) {
                         ingredientList[i - 2] = j;
                     }
+
                 }
             }
+            menuItems[menuNo] = new MenuItem(mName, mPrice, ingredientList);
+            menuNo ++;
+
         }
-        return this.menuItem = new MenuItem(mName, mPrice, mIngredients);
     }
 
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
 
-    public MenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public int getSize() {
-        return size;
-    }
+//    public Ingredient getIngredient() {
+//        return ingredient;
+//    }
+//
+//    public MenuItem getMenuItem() {
+//        return menuItem;
+//    }
+//
+//    public int getSize() {
+//        return size;
+//    }
 }
 

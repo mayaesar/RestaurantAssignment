@@ -67,7 +67,7 @@ public class RestaurantApp {
             }while(!(items > 0));
 
             tables[table] = new Table(items);
-            System.out.printf("Table " + table + " has been seated.\n\n");
+            System.out.print("Table " + table + " has been seated.\n\n");
 
         }
     }
@@ -125,6 +125,7 @@ public class RestaurantApp {
                     System.out.println("How is this table paying? Enter debit, credit, or cash.");
                     payMethod = keyboard.next();
                 }while(!(payMethod.equals("debit") || payMethod.equals("credit") || payMethod.equals("cash")));
+
 
             }
         }
