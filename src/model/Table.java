@@ -1,51 +1,55 @@
 package model;
 
+import java.io.FileNotFoundException;
+
 public class Table {
-    private MenuItem[] order;
+    private MenuList order;
     private int size;
     private double receipt;
     private PayMethod paymentMethod;
+    private double ingredientCost;
+    private int orderingNum;
 
-    public Table(int numMenuItems){
-        this.order = new MenuItem[numMenuItems];
-        this.size=0;
+    public Table(int numMenuItems) throws FileNotFoundException {
+        this.orderingNum = numMenuItems;
+        this.order = new MenuList();
+        this.ingredientCost =0;
+        this.size = 0;
         this.receipt = 0;
     }
 
-    public MenuItem[] getOrder(){
-        return this.order;
-    }
-
-    public void add(int table, int index){
-        for(int i = 0; i < order.length; i++){
-            receipt += order[table].getPrice(index);
-            size++;
-        }
+    public void addToOrder(int index){
+        receipt += order.getItemPrice(index);
+        ingredientCost += order.getIngPrice(index);
+        size++;
     }
 
     public boolean hasOrdered(){
         boolean order = false;
-        if (size == this.order.length){
+        if (size == this.orderingNum-1) {
             order = true;
         }
         return order;
     }
 
-    public PayMethod getPaymentMethod() {
-        return paymentMethod;
+    public PayMethod setPaymentMethod(String paymentMethod) {
+        if (paymentMethod.equals("cash")){
+            return this.paymentMethod = PayMethod.CASH;
+        }
+        else if (paymentMethod.equals("debit")) {
+            return this.paymentMethod = PayMethod.DEBIT;
+        }
+        else {
+            return this.paymentMethod = PayMethod.CREDIT;
+        }
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        if (paymentMethod.equals("cash")){
-            this.paymentMethod = PayMethod.CASH;
-        }
-        if (paymentMethod.equals("debit")) {
-            this.paymentMethod = PayMethod.DEBIT;
-        }
-        if (paymentMethod.equals("credit")){
-            this.paymentMethod = PayMethod.CREDIT;
-        }
+    public int getOrderingNum(){
+        return orderingNum;
+    }
 
+    public double getIngredientCost(){
+       return ingredientCost;
     }
 
     public int getSize() {

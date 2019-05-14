@@ -1,27 +1,26 @@
 package model;
 
 public class MenuItem {
-    private String[] itemName;
-    private double[] price;
+    private String itemName;
+    private double price;
     private int[] ingredients;
 
-    public MenuItem(String[] itemName, double[] price, int[] ingredients) {
+    public MenuItem(String itemName, double price, int[] ingredients) {
         this.itemName = itemName;
         this.price = price;
-       // this.ingredients = ingredients;
+        this.ingredients = ingredients;
     }
 
-    public String getItemName(int index) {
-        return itemName[index];
+    public String getItemName() {
+        return itemName;
     }
 
+    public int getIngredients(){
 
-    public double getPrice(int index) {
-        return price[index];
+        return ingredients.length;
     }
 
-
-    public Ingredient getIngredients(int index) {
-        return ingredients[index];
+    public double getPrice() {
+        return price;
     }
 }

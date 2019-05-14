@@ -1,19 +1,15 @@
-package control;
-
-import model.Ingredient;
-import model.MenuItem;
+package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class CreateMenu {
+public class MenuList {
     private Ingredient[] ingredients;
     private MenuItem[] menuItems;
-    //private MenuItem menuItem;
     private int size;
 
-    public CreateMenu() throws FileNotFoundException {
+    public MenuList() throws FileNotFoundException {
         loadIngredients();
         loadMenuItems();
     }
@@ -80,23 +76,39 @@ public class CreateMenu {
 
                 }
             }
-            menuItems[menuNo] = new MenuItem(mName, mPrice, ingredientList);
+            menuItems[menuNo] = new MenuItem(mName[menuNo], mPrice[menuNo], ingredientList);
             menuNo ++;
-
         }
     }
 
+    public double getIngPrice(int index){
+        double price = 0;
 
-//    public Ingredient getIngredient() {
-//        return ingredient;
-//    }
-//
-//    public MenuItem getMenuItem() {
-//        return menuItem;
-//    }
-//
-//    public int getSize() {
-//        return size;
-//    }
+        for (int i = 0; i < menuItems[index].getIngredients(); i++){
+            price += ingredients[i].getPrice();
+        }
+        return price;
+    }
+
+    public double getItemPrice(int index){
+        double price;
+        price = menuItems[index].getPrice();
+        return price;
+    }
+
+    public void getMenu(){
+        for (int i = 1; i<menuItems.length; i++){
+            System.out.printf("%2d. %-15s",i,menuItems[i].getItemName());
+            if(i%3 == 0){
+                System.out.println();
+            }
+        }
+    }
+
+    public int getSize(){
+        return this.size;
+    }
+
+
+
 }
-

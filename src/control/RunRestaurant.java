@@ -1,15 +1,10 @@
 package control;
 
-import model.MenuList;
-import model.TestIngredient;
-
 import java.io.FileNotFoundException;
 
-public class TestClass {
-    private static MenuList menuList;
-
+public class RunRestaurant {
     public static void main(String[] args) throws FileNotFoundException {
-
-
+        RestaurantApp run = new RestaurantApp();
+        run.runRestaurant();
     }
 }
